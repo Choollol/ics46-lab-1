@@ -18,19 +18,17 @@ void Bag::firstToken() const {
 
 void Bag::allTokens() const {
     for (const auto& token : contents) {
-        std::cout << token.toString() << " ";
+        std::cout << token.toString() << std::endl;
     }
-    std::cout << std::endl;
 }
 
 void Bag::allTokensWhile() const {
     size_t i = 0;
     while (i < contents.size()) {
         const Token& token = contents[i];
-        std::cout << token.toString() << " ";
+        std::cout << token.toString() << std::endl;
         ++i;
     }
-    std::cout << std::endl;
 }
 
 int Bag::addTokens() const {
