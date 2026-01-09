@@ -1,11 +1,12 @@
 #include "Bag.hpp"
+
 #include <iostream>
 
 /**
  * A Bag is a collection of Tokens (chips) that supports
  * functions that work by enumerating the contents.
  *
- * @author: YOUR NAME HERE
+ * @author: CHRISTOPHER SUN
  */
 
 Bag::Bag(int numTokens) : contents(numTokens) {}
@@ -17,33 +18,44 @@ void Bag::firstToken() const {
 
 void Bag::allTokens() const {
     for (const auto& token : contents) {
-        // TODO: print out the currently chosen Token
-        
+        std::cout << token.toString() << " ";
     }
+    std::cout << std::endl;
 }
 
 void Bag::allTokensWhile() const {
     size_t i = 0;
-    // TODO: turn this into a while loop that enumerates and
-    // prints all of the tokens in the bag
-    while () {
-        
+    while (i < contents.size()) {
+        const Token& token = contents[i];
+        std::cout << token.toString() << " ";
+        ++i;
     }
+    std::cout << std::endl;
 }
 
 int Bag::addTokens() const {
-    // TODO: write a loop that enumerates the entire bag
-	// and sums the total of all of the Token values
-    return 0;
+    int sum = 0;
+    for (const Token& token : contents) {
+        sum += token.getValue();
+    }
+    return sum;
 }
 
 int Bag::highValueTokens() const {
-    // TODO: write a loop that enumerates the entire bag
-    // and returns the number of high value Tokens
-    return 0;	
+    int count = 0;
+    for (const Token& token : contents) {
+        if (token.isHighValue()) {
+            ++count;
+        }
+    }
+    return count;
 }
 
 int Bag::firstGreen() const {
-    // TODO: search bag for a green Token, if found, return its index
+    for (size_t i = 0; i < contents.size(); ++i) {
+        if (contents[i].getColor() == "Green") {
+            return i;
+        }
+    }
     return -1;
 }
